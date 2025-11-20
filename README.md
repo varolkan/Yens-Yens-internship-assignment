@@ -80,7 +80,7 @@ The Raspberry Pi Pico's RP2040 chip features two ARM Cortex-M0+ cores. This proj
 File: setup() and loop() functions
 - Initializes I2C communication (GPIO4=SDA, GPIO5=SCL)
 - Continuously polls MPU-6050 for 6-axis motion data (50 Hz)
-- Calculates roll angle (tilt) from accelerometer readings
+- Calculates roll angle (tilt) from accelerometer readings and stores it in sharedAngle
 - Fallback Logic: If sensor fails, generates smooth sine wave simulation
 - Updates shared variable sharedAngle (thread-safe volatile)
 
