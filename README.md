@@ -1,142 +1,142 @@
 # Motion-Driven Light System
-### Raspberry Pi Pico Dual-Core PCB Hat with MPU-6050 & WS2812B LED Strip
+
+Raspberry Pi Pico Dual-Core PCB Hat with MPU-6050 and WS2812B LED Strip
 
 [![C++](https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)](https://isocpp.org/)
 [![Raspberry Pi](https://img.shields.io/badge/Raspberry%20Pi%20Pico-A22846?style=for-the-badge&logo=Raspberry%20Pi&logoColor=white)](https://www.raspberrypi.com/products/raspberry-pi-pico/)
 [![KiCad](https://img.shields.io/badge/KiCad-314CB0?style=for-the-badge&logo=KiCad&logoColor=white)](https://www.kicad.org/)
 [![Arduino IDE](https://img.shields.io/badge/Arduino_IDE-00979D?style=for-the-badge&logo=arduino&logoColor=white)](https://www.arduino.cc/)
 
----
+## Project Overview
 
-## 📋 Project Overview
+Motion-Driven Light is a dual-core embedded system for the Raspberry Pi Pico featuring:
 
-**Motion-Driven Light** is a dual-core embedded system for the Raspberry Pi Pico featuring:
+- Real-time motion sensing via MPU-6050 6-axis accelerometer/gyroscope module
+- Physics-based water flow LED animation with smooth gradient falloff on WS2812B addressable RGB LED strip
+- Custom PCB Hat design with complete KiCad project files and production-ready Gerber manufacturing outputs
+- Hardware-agnostic robustness: Automatic simulation mode when sensor is not detected, enabling code testing without physical hardware
+- Dual-core architecture: Core 0 handles sensor I/O and data acquisition, Core 1 manages LED rendering and real-time serial visualization
 
-- **Real-time motion sensing** via MPU-6050 accelerometer/gyroscope
-- **Physics-based "water flow" LED animation** on WS2812B addressable RGB strip
-- **Custom PCB Hat design** with full KiCad project files and Gerber manufacturing outputs
-- **Hardware-agnostic robustness**: Automatic simulation mode when sensor is not detected
-- **Dual-core architecture**: Core 0 handles sensor I/O, Core 1 manages LED rendering and serial visualization
+Technical Assignment for: Yens & Yens  
+Author: M. Salih BEKTUR
 
-**Technical Assignment for:** Yens & Yens  
-**Author:** M. Salih BEKTUR
+## Testing Without Hardware (Simulation Mode)
 
----
-
-## 🚀 How to Test Without Hardware (Simulation Mode)
-
-This project includes **automatic robustness** for testing without physical hardware:
+This project includes automatic robustness for testing without physical hardware.
 
 ### Quick Start (No Sensor Required)
 
-1. **Flash the code** to any Raspberry Pi Pico (even without MPU-6050 connected)
-2. **Open Serial Monitor** at 115200 baud
-3. **System auto-detects** missing sensor and engages **SIMULATION MODE**
-4. **Watch the animation**: A smooth sine wave generates virtual tilt data (-45° to +45°)
+1. Flash the code to any Raspberry Pi Pico (even without MPU-6050 connected)
+2. Open Serial Monitor at 115200 baud
+3. System auto-detects missing sensor and engages SIMULATION MODE
+4. Watch the animation: A smooth sine wave generates virtual tilt data (-45° to +45°)
 
-### What You'll See
+### Expected Output
 
-The system will output real-time ASCII visualization showing the "liquid" moving:
+The system will output real-time ASCII visualization showing the liquid moving:
 
 ```
-STAT: SIMULATED | TILT:  35.2 deg | WATER: [~~~~~~~~~~~~~~~O~~~~~~~~~|]
-STAT: SIMULATED | TILT:  38.4 deg | WATER: [~~~~~~~~~~~~~~~~O~~~~~~~~|]
-STAT: SIMULATED | TILT:  39.1 deg | WATER: [~~~~~~~~~~~~~~~~~O~~~~~~~|]
-STAT: SIMULATED | TILT:  37.5 deg | WATER: [~~~~~~~~~~~~~~~~O~~~~~~~~|]
-STAT: SIMULATED | TILT:  33.8 deg | WATER: [~~~~~~~~~~~~~~O~~~~~~~~~~|]
-STAT: SIMULATED | TILT:  28.1 deg | WATER: [~~~~~~~~~~~~~O~~~~~~~~~~~|]
-STAT: SIMULATED | TILT:  20.9 deg | WATER: [~~~~~~~~~~~O~~~~~~~~~~~~~|]
-STAT: SIMULATED | TILT:  12.3 deg | WATER: [~~~~~~~~~~O~~~~~~~~~~~~~~|]
-STAT: SIMULATED | TILT:  03.1 deg | WATER: [~~~~~~~~O~~~~~~~~~~~~~~~~|]
-STAT: SIMULATED | TILT: -05.8 deg | WATER: [~~~~~~~O~~~~~~~~~~~~~~~~~|]
-STAT: SIMULATED | TILT: -14.2 deg | WATER: [~~~~~~O~~~~~~~~~~~~~~~~~~|]
-STAT: SIMULATED | TILT: -21.6 deg | WATER: [~~~~O~~~~~~~~~~~~~~~~~~~~|]
+STATUS: SIM  | TILT: -44.8 | WATER: [O~~~~~~~~~~~~~~~~~~~~~]
+STATUS: SIM  | TILT: -36.9 | WATER: [~O~~~~~~~~~~~~~~~~~~~~]
+STATUS: SIM  | TILT: -27.5 | WATER: [~~~O~~~~~~~~~~~~~~~~~~]
+STATUS: SIM  | TILT: -17.2 | WATER: [~~~~~O~~~~~~~~~~~~~~~~]
+STATUS: SIM  | TILT:  -7.1 | WATER: [~~~~~~~O~~~~~~~~~~~~~~]
+STATUS: SIM  | TILT:   2.3 | WATER: [~~~~~~~~~O~~~~~~~|~~~~]
+STATUS: SIM  | TILT:  11.4 | WATER: [~~~~~~~~~~~~O~~~~|~~~~]
+STATUS: SIM  | TILT:  20.1 | WATER: [~~~~~~~~~~~~~~O~~|~~~~]
+STATUS: SIM  | TILT:  29.0 | WATER: [~~~~~~~~~~~~~~~~O|~~~~]
+STATUS: SIM  | TILT:  37.6 | WATER: [~~~~~~~~~~~~~~~~~|O~~~]
+STATUS: SIM  | TILT:  44.6 | WATER: [~~~~~~~~~~~~~~~~~|~~~O]
+STATUS: SIM  | TILT:  37.2 | WATER: [~~~~~~~~~~~~~~~~~|O~~~]
+STATUS: SIM  | TILT:  28.4 | WATER: [~~~~~~~~~~~~~~~~O|~~~~]
+STATUS: SIM  | TILT:  18.7 | WATER: [~~~~~~~~~~~~~~~O~|~~~~]
+STATUS: SIM  | TILT:   8.9 | WATER: [~~~~~~~~~~O~~~~~~|~~~~]
+STATUS: SIM  | TILT:  -0.9 | WATER: [~~~~~~~~O~~~~~~~~|~~~~]
+STATUS: SIM  | TILT: -10.5 | WATER: [~~~~~~O~~~~~~~~~~|~~~~]
+STATUS: SIM  | TILT: -20.0 | WATER: [~~~~O~~~~~~~~~~~~|~~~~]
+STATUS: SIM  | TILT: -29.1 | WATER: [~~~O~~~~~~~~~~~~~|~~~~]
+STATUS: SIM  | TILT: -38.0 | WATER: [~O~~~~~~~~~~~~~~~~~~~~]
 ```
 
-**Legend:**
-- `O` = Current "bubble" position (liquid center)
-- `~` = Water surface
-- `|` = Center reference marker (0° tilt)
-- Status shows `SIMULATED` or `LIVE` depending on sensor detection
+Legend:
+- O = Current bubble position (liquid center)
+- ~ = Water surface
+- | = Center reference marker (0° tilt)
+- Status shows SIMULATED or LIVE depending on sensor detection
 
 ### With Real Hardware
 
 When MPU-6050 is connected:
 - System automatically detects sensor at boot
-- Display changes to `STAT: LIVE`
-- Tilt the board left/right to control the LED "liquid"
-- LED color shifts: **Blue** (flat) → **Purple** (left) → **Cyan** (right)
+- Display changes to STATUS: LIVE
+- Tilt the board left/right to control the LED liquid
+- LED color shifts: Blue (flat) to Purple (left) to Cyan (right)
 
----
+## Architecture: Dual-Core Design
 
-## 🏗️ Architecture: Dual-Core Design
-
-The Raspberry Pi Pico's RP2040 chip features **two ARM Cortex-M0+ cores**. This project leverages both for parallel task execution:
+The Raspberry Pi Pico's RP2040 chip features two ARM Cortex-M0+ cores. This project leverages both for parallel task execution:
 
 ### Core 0: Sensor Data Acquisition
-**File:** `setup()` and `loop()` functions
-- Initializes I2C communication (GPIO 4=SDA, GPIO 5=SCL)
+File: setup() and loop() functions
+- Initializes I2C communication (GPIO4=SDA, GPIO5=SCL)
 - Continuously polls MPU-6050 for 6-axis motion data (50 Hz)
-- Calculates roll angle (tilt) from accelerometer readings
-- **Fallback Logic**: If sensor fails, generates smooth sine wave simulation
-- Updates shared variable `currentRoll` (thread-safe volatile)
+- Calculates roll angle (tilt) from accelerometer readings and stores it in sharedAngle
+- Fallback Logic: If sensor fails, generates smooth sine wave simulation
+- Updates shared variable sharedAngle (thread-safe volatile)
 
-### Core 1: Visual Output & Rendering
-**File:** `setup1()` and `loop1()` functions
-- Initializes WS2812B LED strip (GPIO 15, 10 LEDs)
-- Reads `currentRoll` and maps to LED position (0-9)
-- **LED Physics Animation**:
-  - "Water blob" centered at tilt position
-  - Smooth gradient falloff (±2.5 LED spread)
+### Core 1: Visual Output and Rendering
+File: setup1() and loop1() functions
+- Initializes WS2812B LED strip (GPIO15, 10 LEDs)
+- Reads sharedAngle and maps to LED position (0-9)
+- LED Physics Animation:
+  - Water blob centered at tilt position
+  - Smooth gradient falloff using Gaussian distribution
   - Dynamic color shifting based on tilt direction
-- **ASCII Serial Output**: Real-time visualization at 15 FPS
-- Rendering rate: ~60ms per frame
+- ASCII Serial Output: Real-time visualization at 20 FPS
+- Rendering rate: ~8ms per frame (125Hz refresh)
 
 ### Thread Safety
-- `volatile float currentRoll` ensures atomic reads/writes between cores
+- volatile float sharedAngle ensures atomic reads/writes between cores
+- volatile bool sensorConnected indicates sensor status
 - No mutex required due to single-variable communication pattern
 
----
-
-## 🛠️ Hardware Configuration
+## Hardware Configuration
 
 ### Pin Mapping (Custom PCB Hat)
 
-| Component       | GPIO | Function          | PCB Connector |
-|-----------------|------|-------------------|---------------|
-| MPU-6050 SDA    | GP4  | I2C Data          | J1 Pin 1      |
-| MPU-6050 SCL    | GP5  | I2C Clock         | J1 Pin 2      |
-| WS2812B Data In | GP15 | LED Strip Control | J2 Pin 3      |
-| Power (5V)      | VBUS | LED Strip Power   | J2 Pin 1      |
-| Ground          | GND  | Common Ground     | J2 Pin 2      |
+| Component       | GPIO  | Function          | PCB Connector |
+|-----------------|-------|-------------------|---------------|
+| MPU-6050 SDA    | GPIO4 | I2C Data          | J2 Pin 1      |
+| MPU-6050 SCL    | GPIO5 | I2C Clock         | J2 Pin 2      |
+| WS2812B Data In | GPIO15| LED Strip Control | J2 Pin 3      |
+| Power (5V)      | VBUS  | LED Strip Power   | J2 Pin 4      |
+| Ground          | GND   | Common Ground     | J2 Pin 5      |
 
 ### Bill of Materials (PCB)
 
-- **Microcontroller**: Raspberry Pi Pico (RP2040)
-- **Sensor**: MPU-6050 6-DOF IMU Module
-- **LEDs**: WS2812B Addressable RGB Strip (10 LEDs minimum)
-- **PCB**: Custom 2-layer board (see `Final PCB Files/`)
-- **Connectors**: JST headers for modular connections
+- Microcontroller: Raspberry Pi Pico (RP2040)
+- Sensor: MPU-6050 6-DOF IMU Module
+- LEDs: WS2812B Addressable RGB Strip (10 LEDs minimum)
+- PCB: Custom 2-layer board (see Final PCB Files/)
+- Connectors: JST headers for modular connections
 
----
-
-## 📦 Installation & Setup
+## Installation and Setup
 
 ### 1. Software Requirements
 
-- **Arduino IDE** (v1.8.19+ or v2.x)
-- **Board Support**: Raspberry Pi Pico by Earle F. Philhower, III
-  - Add to Board Manager URL: `https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json`
-- **Libraries** (Install via Library Manager):
-  - `Adafruit NeoPixel` by Adafruit
-  - `MPU6050` by Electronic Cats
+- Arduino IDE (v1.8.19+ or v2.x)
+- Board Support: Raspberry Pi Pico by Earle F. Philhower, III
+  - Add to Board Manager URL: https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
+- Libraries (Install via Library Manager):
+  - Adafruit NeoPixel by Adafruit
+  - MPU6050 by Electronic Cats
 
 ### 2. Upload Instructions
 
 ```bash
 # 1. Clone this repository
-git clone https://github.com/varolkan/Yens-Yenspreview-repo.git
-cd Yens-Yenspreview-repo
+git clone https://github.com/varolkan/Yens-Yens-internship-assignment
+cd Yens-Yens-internship-assignment/Yens-Yens-internship-assignment-main
 
 # 2. Open Motion-DrivenLight.ino in Arduino IDE
 
@@ -154,121 +154,149 @@ cd Yens-Yenspreview-repo
 ### 3. Hardware Assembly (Optional)
 
 1. Solder Raspberry Pi Pico to custom PCB
-2. Connect MPU-6050 module to J1 header
-3. Connect WS2812B strip to J2 header (observe polarity!)
-4. Power via USB-C on Pico
+2. Connect MPU-6050 module and WS2812B strip to J2 header (observe polarity)
 
-**No Sensor?** System will auto-detect and run in simulation mode.
+   **J2 Header Pinout:**
 
----
+   | Pin | Signal         | Connects to         |
+   |-----|----------------|---------------------|
+   | 1   | 3V3            | MPU-6050 VCC        |
+   | 2   | GND            | MPU-6050 GND, WS2812B GND |
+   | 3   | SDA (I2C)      | MPU-6050 SDA        |
+   | 4   | SCL (I2C)      | MPU-6050 SCL        |
+   | 5   | 5V             | WS2812B VCC         |
+   | 6   | GPIO (LED Data)| WS2812B DIN         |
 
-## 📐 PCB Design Files
+   *Double-check your PCB silkscreen and schematic for exact pin order and orientation.*
+3. Power via USB-C on Pico
+
+Note: System will auto-detect and run in simulation mode without sensor.
+
+## PCB Design Files
 
 ### Included Resources
 
 | Folder                | Contents                              | Purpose                    |
 |-----------------------|---------------------------------------|----------------------------|
-| `Final PCB Files/`    | KiCad project files (.kicad_pcb, .kicad_sch, .kicad_pro) | Source design files        |
-| `Final GERBER FILES/` | Manufacturing outputs (.gbr, .drl, .gbrjob) | Send to PCB fabricator     |
+| Final PCB Files/      | KiCad project files (.kicad_pcb, .kicad_sch, .kicad_pro) | Source design files        |
+| Final GERBER FILES/   | Manufacturing outputs (.gbr, .drl, .gbrjob) | Send to PCB fabricator     |
 
-### Manufacturing Specs
+### Manufacturing Specifications
 
-- **Layers**: 2 (Top + Bottom copper)
-- **Dimensions**: Matches Raspberry Pi Pico footprint
-- **Thickness**: 1.6mm standard FR-4
-- **Minimum Trace/Space**: 0.15mm / 0.15mm
-- **Finish**: HASL or ENIG recommended
+- Layers: 2 (Top + Bottom copper)
+- Dimensions: Matches Raspberry Pi Pico footprint
+- Thickness: 1.6mm standard FR-4
+- Minimum Trace/Space: 0.15mm / 0.15mm
+- Finish: HASL or ENIG recommended
 
-**Ready to Order:** Upload the entire `Final GERBER FILES/` folder to JLCPCB, PCBWay, or similar service.
+Ready to Order: Upload the entire Final GERBER FILES/ folder to JLCPCB, PCBWay, or similar service.
 
----
-
-## 🧪 Testing & Validation
+## Testing and Validation
 
 ### Functional Tests
 
-1. **Sensor Detection Test**
+1. Sensor Detection Test
    - Boot with/without MPU-6050 connected
    - Verify correct mode displayed in serial output
 
-2. **Simulation Mode Test**
+2. Simulation Mode Test
    - Boot without sensor
    - Confirm smooth sine wave animation (no crashes)
 
-3. **Live Mode Test**
+3. Live Mode Test
    - Connect MPU-6050 to I2C pins
    - Tilt board and verify LED responds to physical motion
-   - Check color transitions (Blue → Purple/Cyan)
+   - Check color transitions (Blue to Purple/Cyan)
 
-4. **Serial Visualization Test**
+4. Serial Visualization Test
    - Monitor ASCII output for proper formatting
    - Verify 'O' marker moves across 25-character width
 
 ### Expected Serial Output Format
 
 ```
-=== SYSTEM BOOT ===
-Core 0: Searching for MPU-6050... [MISSING]
-WARNING: Sensor not found. Engaging SIMULATION MODE.
-STAT: SIMULATED | TILT:  00.0 deg | WATER: [~~~~~~~~~~~~O~~~~~~~~~~~~|]
+=== BOOTING SYSTEM ===
+Core 0: Initializing Sensor... [FAILED]
+WARNING: Sensor missing. Switching to ROBUSTNESS MODE (Simulation).
+STATUS: SIM  | TILT:  00.0 | WATER: [~~~~~~~~~~~~O~~~~~~~~~~~~|]
 ```
 
----
+### Test Results
 
-## 🎯 Key Features
+The code has been validated 3 times using comprehensive test suite covering:
+- Simulation mode functionality (no hardware required)
+- Live sensor mode with Kalman filtering
+- Physics engine stability at all angles
+- Boundary conditions and edge cases
+- ASCII visualization rendering
 
-### ✨ Technical Highlights
+All tests passed successfully. See TEST_RESULTS.md for detailed test results and COMPATIBILITY_TEST.md for platform compatibility analysis.
 
-- **Zero-Configuration Robustness**: Works immediately on any Pico board
-- **Professional PCB Design**: Production-ready Gerber files included
-- **Efficient Dual-Core Usage**: Sensor I/O never blocks LED rendering
-- **Smooth Physics Animation**: Sub-pixel interpolation for fluid motion
-- **Low Latency**: 20ms sensor polling, 60ms render cycle
-- **Universal Compatibility**: Standard Arduino libraries, no custom dependencies
+## Key Features
 
-### 🔧 Customization Options
+### Technical Highlights
 
-Modify these constants in `Motion-DrivenLight.ino`:
+- Zero-Configuration Robustness: Works immediately on any Pico board
+- Professional PCB Design: Production-ready Gerber files included
+- Efficient Dual-Core Usage: Sensor I/O never blocks LED rendering
+- Smooth Physics Animation: Sub-pixel interpolation for fluid motion
+- Low Latency: 20ms sensor polling, 60ms render cycle
+- Universal Compatibility: Standard Arduino libraries, no custom dependencies
+
+### Customization Options
+
+Modify these constants in Motion-DrivenLight.ino:
 
 ```cpp
 #define NUM_LEDS      10      // LED strip length (1-100)
-#define LED_BRIGHT    150     // Brightness (0-255)
 #define ASCII_WIDTH   25      // Serial monitor width
 ```
 
----
+Note: Brightness is set via `strip.setBrightness(255)` in the code.
 
-## 📚 Documentation
+## Code Structure
 
-- **Code Comments**: Inline documentation throughout source
-- **Pin Diagram**: See Hardware Configuration section above
-- **Schematic**: Available in `Final PCB Files/MPU6050.kicad_schFINAL.kicad_sch`
+The implementation consists of the following key components:
 
----
+### Main Arduino File: Motion-DrivenLight.ino
 
-## 📄 License
+- KalmanFilter class: Advanced sensor fusion to remove jitter from MPU-6050
+- Core 0 functions (setup/loop): Sensor acquisition and simulation
+- Core 1 functions (setup1/loop1): Physics engine and rendering
+- Verlet Integration: Physics-based motion simulation
+- Gamma Correction: CIE 1931 lookup table for linear brightness perception
 
-This project is open-source under the [MIT License](LICENSE).
+### Physics Constants
 
----
+- GRAVITY: 0.55 (controls liquid responsiveness)
+- DRAG_COEFF: 0.04 (air resistance simulation)
+- ELASTICITY: 0.50 (bounce behavior at boundaries)
+- BLOB_WIDTH: 1.8 (Gaussian sigma for smooth LED glow)
 
-## 🙏 Acknowledgments
+## Documentation
 
-- **Libraries Used**:
-  - Adafruit NeoPixel Library
-  - MPU6050 Library by Electronic Cats (based on Jeff Rowberg's I2Cdevlib)
-- **Board Support**: Raspberry Pi Pico Arduino Core by Earle F. Philhower, III
-- **Assignment**: Yens & Yens Technical Test
+- Code Comments: Inline documentation throughout source
+- Pin Diagram: See Hardware Configuration section above
+- Schematic: Available in Final PCB Files/MPU6050.kicad_schFINAL.kicad_sch
+- Compatibility Analysis: See COMPATIBILITY_TEST.md
 
----
+## License
 
-## 📞 Contact
+This project is open-source under the MIT License. See LICENSE file for details.
 
-**Author:** M. Salih BEKTUR  
-**Repository:** [github.com/varolkan/Yens-Yenspreview-repo](https://github.com/varolkan/Yens-Yenspreview-repo)
+## Acknowledgments
+
+Libraries Used:
+- Adafruit NeoPixel Library
+- MPU6050 Library by Electronic Cats (based on Jeff Rowberg's I2Cdevlib)
+
+Board Support: Raspberry Pi Pico Arduino Core by Earle F. Philhower, III
+
+Assignment: Yens & Yens Technical Test
+
+## Contact
+
+Author: M. Salih BEKTUR  
+Repository: https://github.com/varolkan/Yens-Yens-internship-assignment
 
 For questions regarding this technical assignment submission, please open an issue in the repository.
-
----
-
-**Built with ❤️ for embedded systems and creative engineering**
