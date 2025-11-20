@@ -155,6 +155,19 @@ cd Testing-123/Yens-Yens-internship-assignment-main
 
 1. Solder Raspberry Pi Pico to custom PCB
 2. Connect MPU-6050 module and WS2812B strip to J2 header (observe polarity)
+
+   **J2 Header Pinout:**
+
+   | Pin | Signal         | Connects to         |
+   |-----|----------------|---------------------|
+   | 1   | 3V3            | MPU-6050 VCC        |
+   | 2   | GND            | MPU-6050 GND, WS2812B GND |
+   | 3   | SDA (I2C)      | MPU-6050 SDA        |
+   | 4   | SCL (I2C)      | MPU-6050 SCL        |
+   | 5   | 5V             | WS2812B VCC         |
+   | 6   | GPIO (LED Data)| WS2812B DIN         |
+
+   *Double-check your PCB silkscreen and schematic for exact pin order and orientation.*
 3. Power via USB-C on Pico
 
 Note: System will auto-detect and run in simulation mode without sensor.
