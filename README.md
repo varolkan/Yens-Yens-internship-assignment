@@ -36,21 +36,10 @@ This project includes automatic robustness for testing without physical hardware
 The system will output real-time ASCII visualization showing the liquid moving:
 
 ```
-STATUS: SIM  | TILT: -44.8 | WATER: [O~~~~~~~~~~~~~~~~~~~~~]
-STATUS: SIM  | TILT: -36.9 | WATER: [~O~~~~~~~~~~~~~~~~~~~~]
-STATUS: SIM  | TILT: -27.5 | WATER: [~~~O~~~~~~~~~~~~~~~~~~]
-STATUS: SIM  | TILT: -17.2 | WATER: [~~~~~O~~~~~~~~~~~~~~~~]
-STATUS: SIM  | TILT:  -7.1 | WATER: [~~~~~~~O~~~~~~~~~~~~~~]
-STATUS: SIM  | TILT:   2.3 | WATER: [~~~~~~~~~O~~~~~~~|~~~~]
-STATUS: SIM  | TILT:  11.4 | WATER: [~~~~~~~~~~~~O~~~~|~~~~]
-STATUS: SIM  | TILT:  20.1 | WATER: [~~~~~~~~~~~~~~O~~|~~~~]
-STATUS: SIM  | TILT:  29.0 | WATER: [~~~~~~~~~~~~~~~~O|~~~~]
 STATUS: SIM  | TILT:  37.6 | WATER: [~~~~~~~~~~~~~~~~~|O~~~]
 STATUS: SIM  | TILT:  44.6 | WATER: [~~~~~~~~~~~~~~~~~|~~~O]
 STATUS: SIM  | TILT:  37.2 | WATER: [~~~~~~~~~~~~~~~~~|O~~~]
 STATUS: SIM  | TILT:  28.4 | WATER: [~~~~~~~~~~~~~~~~O|~~~~]
-STATUS: SIM  | TILT:  18.7 | WATER: [~~~~~~~~~~~~~~~O~|~~~~]
-STATUS: SIM  | TILT:   8.9 | WATER: [~~~~~~~~~~O~~~~~~|~~~~]
 STATUS: SIM  | TILT:  -0.9 | WATER: [~~~~~~~~O~~~~~~~~|~~~~]
 STATUS: SIM  | TILT: -10.5 | WATER: [~~~~~~O~~~~~~~~~~|~~~~]
 STATUS: SIM  | TILT: -20.0 | WATER: [~~~~O~~~~~~~~~~~~|~~~~]
