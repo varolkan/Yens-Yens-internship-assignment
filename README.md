@@ -104,13 +104,21 @@ File: setup1() and loop1() functions
 
 ### Pin Mapping (Custom PCB Hat)
 
-| Component       | GPIO  | Function          | PCB Connector |
-|-----------------|-------|-------------------|---------------|
-| MPU-6050 SDA    | GPIO4 | I2C Data          | J2 Pin 1      |
-| MPU-6050 SCL    | GPIO5 | I2C Clock         | J2 Pin 2      |
-| WS2812B Data In | GPIO15| LED Strip Control | J2 Pin 3      |
-| Power (5V)      | VBUS  | LED Strip Power   | J2 Pin 4      |
-| Ground          | GND   | Common Ground     | J2 Pin 5      |
+**Raspberry Pi Pico GPIO Assignments:**
+
+| Component       | GPIO  | Function          | Connection Type    |
+|-----------------|-------|-------------------|--------------------|
+| MPU-6050 SDA    | GPIO4 | I2C Data          | On-board (soldered)|
+| MPU-6050 SCL    | GPIO5 | I2C Clock         | On-board (soldered)|
+| WS2812B Data In | GPIO15| LED Strip Control | J2 Connector       |
+
+**J2 Connector Pinout (WS2812B LED Strip):**
+
+| Pin | Signal    | Description       |
+|-----|-----------|-------------------|
+| 1   | Data      | GPIO15 (LED Data) |
+| 2   | 5V        | LED Power Supply  |
+| 3   | GND       | Ground            |
 
 ### Bill of Materials (PCB)
 
@@ -154,8 +162,12 @@ cd Testing-123/Yens-Yens-internship-assignment-main
 ### 3. Hardware Assembly (Optional)
 
 1. Solder Raspberry Pi Pico to custom PCB
-2. Connect MPU-6050 module and WS2812B strip to J2 header (observe polarity)
-3. Power via USB-C on Pico
+2. Solder MPU-6050 chip to the PCB (component U1 - already placed in PCB design)
+3. Connect WS2812B LED strip to J2 connector (3-pin header):
+   - Pin 1: Data (from GPIO15)
+   - Pin 2: 5V Power
+   - Pin 3: Ground
+4. Power via USB-C on Pico
 
 Note: System will auto-detect and run in simulation mode without sensor.
 
