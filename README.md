@@ -68,7 +68,7 @@ Legend:
 
 When MPU-6050 is connected:
 - System automatically detects sensor at boot
-- Display changes to STAT: LIVE
+- Display changes to STATUS: LIVE
 - Tilt the board left/right to control the LED liquid
 - LED color shifts: Blue (flat) to Purple (left) to Cyan (right)
 
@@ -97,7 +97,7 @@ File: setup1() and loop1() functions
 
 ### Thread Safety
 - volatile float sharedAngle ensures atomic reads/writes between cores
-- volatile bool mpuFound indicates sensor status
+- volatile bool sensorConnected indicates sensor status
 - No mutex required due to single-variable communication pattern
 
 ## Hardware Configuration
@@ -215,10 +215,10 @@ Ready to Order: Upload the entire Final GERBER FILES/ folder to JLCPCB, PCBWay, 
 ### Expected Serial Output Format
 
 ```
-=== SYSTEM BOOT ===
-Core 0: Searching for MPU-6050... [MISSING]
-WARNING: Sensor not found. Engaging SIMULATION MODE.
-STAT: SIMULATED | TILT:  00.0 deg | WATER: [~~~~~~~~~~~~O~~~~~~~~~~~~|]
+=== BOOTING SYSTEM ===
+Core 0: Initializing Sensor... [FAILED]
+WARNING: Sensor missing. Switching to ROBUSTNESS MODE (Simulation).
+STATUS: SIM  | TILT:  00.0 | WATER: [~~~~~~~~~~~~O~~~~~~~~~~~~|]
 ```
 
 ### Test Results
@@ -249,9 +249,10 @@ Modify these constants in Motion-DrivenLight.ino:
 
 ```cpp
 #define NUM_LEDS      10      // LED strip length (1-100)
-#define LED_BRIGHT    150     // Brightness (0-255)
 #define ASCII_WIDTH   25      // Serial monitor width
 ```
+
+Note: Brightness is set via `strip.setBrightness(255)` in the code.
 
 ## Code Structure
 
