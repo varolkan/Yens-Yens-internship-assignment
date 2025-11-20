@@ -97,7 +97,7 @@ File: setup1() and loop1() functions
 
 ### Thread Safety
 - volatile float sharedAngle ensures atomic reads/writes between cores
-- volatile bool sensorConnected indicates sensor status
+- volatile bool mpuFound indicates sensor status
 - No mutex required due to single-variable communication pattern
 
 ## Hardware Configuration
