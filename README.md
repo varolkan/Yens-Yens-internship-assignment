@@ -283,6 +283,6 @@ Assignment: Yens & Yens Technical Test
 ## Contact
 
 Author: M. Salih BEKTUR  
-Repository: github.com/varolkan/Testing-123
+Repository: https://github.com/varolkan/Yens-Yens-internship-assignment
 
 For questions regarding this technical assignment submission, please open an issue in the repository.
