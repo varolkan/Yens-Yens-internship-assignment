@@ -135,8 +135,8 @@ File: setup1() and loop1() functions
 
 ```bash
 # 1. Clone this repository
-git clone https://github.com/varolkan/Testing-123.git
-cd Testing-123/Yens-Yens-internship-assignment-main
+git clone https://github.com/varolkan/Yens-Yens-internship-assignment
+cd Yens-Yens-internship-assignment/Yens-Yens-internship-assignment-main
 
 # 2. Open Motion-DrivenLight.ino in Arduino IDE
 
