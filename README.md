@@ -277,7 +277,7 @@ The implementation consists of the following key components:
 
 - Code Comments: Inline documentation throughout source
 - Pin Diagram: See Hardware Configuration section above
-- Schematic: Available in Final PCB Files/MPU6050.kicad_sch
+- Schematic: Available in Final PCB Files/MPU6050.kicad_schFINAL.kicad_sch
 - Compatibility Analysis: See COMPATIBILITY_TEST.md
 
 ## License
